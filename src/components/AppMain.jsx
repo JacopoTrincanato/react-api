@@ -2,7 +2,7 @@
 import Form from "./form/Form";
 
 //importo l'array di post
-import posts from "../data/posts";
+//import posts from "../data/posts";
 
 //creo il componente main
 export default function AppMain() {
@@ -13,7 +13,7 @@ export default function AppMain() {
     const uniqueTags = [];
 
     //ciclo all'interno di post
-    posts.forEach(post => {
+    /*posts.forEach(post => {
 
         //ciclo all'interno dei tag
         post.tags.forEach(tag => {
@@ -22,7 +22,7 @@ export default function AppMain() {
             }
         })
 
-    });
+    });*/
 
     //eseguo il return
     return (

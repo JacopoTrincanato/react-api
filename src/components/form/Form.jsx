@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import style from "./Form.module.css"
 
 //importo i post
-import posts from "../../data/posts";
+//import posts from "../../data/posts";
 
 //importo AddButton 
 import AddButton from "../buttons/AddButton";
@@ -26,7 +26,7 @@ const addedPost = {
 //creo il componente Form
 export default function Form() {
     const [formData, setFormData] = useState(addedPost)
-    const [initialPosts, setInitialPosts] = useState(posts)
+    const [initialPosts, setInitialPosts] = useState(/*posts*/)
 
     const [postsData, setPostsData] = useState({})
 
@@ -178,7 +178,7 @@ export default function Form() {
 
             </section>
 
-            {postsData ? initialPosts.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
+            {postsData.data ? postsData.data.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
         </>
     )
 }
