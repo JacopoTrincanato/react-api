@@ -95,8 +95,11 @@ export default function Form() {
 
     //eseguo il return
     return (
-        <div>
+        <>
+
             <button type='button' onClick={handleClick}>Fetch Posts</button>
+
+
             <section>
                 <h2>Aggiungi un nuovo post utilizzando il form</h2>
 
@@ -131,14 +134,14 @@ export default function Form() {
                     </textarea>
 
                     {/* Selettore per impostare se il post è pubblicato */}
-                    <select name="published"
+                    {/*<select name="published"
                         id="category"
                         className={style.placeholder}
                         value={formData.published ? "published" : "notPublished"}
                         onChange={handleFormField}>
                         <option value="published">Published</option>
                         <option value="notPublished">not Published</option>
-                    </select>
+                    </select>*/}
 
                     {/* Checkbox per i vari tag*/}
                     <div>
@@ -179,6 +182,6 @@ export default function Form() {
             </section>
             {postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
             {Array.isArray(postsData) ? postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
-        </div>
+        </>
     )
 }

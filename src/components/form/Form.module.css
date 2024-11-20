@@ -9,13 +9,14 @@ input[type="checkbox"] {
     margin-left: 1rem;
 }
 
-.formBtn {
+.fetchBtn {
     background-color: rgb(14, 238, 14);
     color: white;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.5rem;
-    margin-left: 1rem;
+    text-align: center;
+    margin: auto;
 }
 
 .placeholder {
