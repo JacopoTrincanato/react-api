@@ -95,7 +95,7 @@ export default function Form() {
 
     //eseguo il return
     return (
-        <>
+        <div>
             <button type='button' onClick={handleClick}>Fetch Posts</button>
             <section>
                 <h2>Aggiungi un nuovo post utilizzando il form</h2>
@@ -179,6 +179,6 @@ export default function Form() {
             </section>
             {postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
             {Array.isArray(postsData) ? postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
-        </>
+        </div>
     )
 }
