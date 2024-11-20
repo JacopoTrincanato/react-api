@@ -1,6 +1,3 @@
-//importo useState e useEffect
-import { useState, useEffect } from 'react'
-
 //importo lo stile
 import style from './Card.module.css'
 
@@ -22,7 +19,7 @@ export default function Card({ cardPost, cardIndex, eliminatePost }) {
                 <div className={style.card}>
                     <div className={`${style.cardTop} ${style.dFlex}`}>
                         {/* Immagine associata al post, con un testo alternativo generico. */}
-                        <img src={cardPost.image} alt="immagine" />
+                        <img src={'http://localhost:3002/posts' + cardPost.image} alt="immagine" />
                     </div>
 
                     <div className={style.cardBottom}>

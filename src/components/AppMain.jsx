@@ -1,6 +1,3 @@
-//importo useState e useEffect
-import { useState, useEffect } from 'react'
-
 //importo il form
 import Form from "./form/Form";
 
@@ -9,24 +6,6 @@ import posts from "../data/posts";
 
 //creo il componente main
 export default function AppMain() {
-    const [postsData, setPostsData] = useState({})
-
-    useEffect(fetchData, [])
-
-    //creo la funzione handleClick
-    function handleClick() {
-        fetchData()
-    }
-
-    //creo la funzione fetchData
-    function fetchData(url = 'http://localhost:3002/posts') {
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-                console.log(data);
-                setPostsData(data)
-            })
-    }
 
     //ciclo all'interno dell'array posts per creare una sezione con i tag in modo che non si ripetano
 
@@ -53,7 +32,7 @@ export default function AppMain() {
             <Form />
 
             <div>
-                <button type='button' onClick={handleClick}>Fetch Posts</button>
+
                 {postsData.data ?
                     postsData.data.map(post => (
                         <div key={post.id}>

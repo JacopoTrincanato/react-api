@@ -1,4 +1,4 @@
-export default [
+{/*export default [
     {
         id: 1,
         title: "Titolo del Post",
@@ -35,4 +35,4 @@ export default [
         tags: ["html"],
         published: false,
     },
-];
+];*/}
