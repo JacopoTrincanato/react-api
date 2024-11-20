@@ -1,5 +1,5 @@
-//importo lo useState
-import { useState } from "react";
+//importo lo useState e useEffect
+import { useState, useEffect } from "react";
 
 //importo lo stile
 import style from "./Form.module.css"
@@ -27,6 +27,25 @@ const addedPost = {
 export default function Form() {
     const [formData, setFormData] = useState(addedPost)
     const [initialPosts, setInitialPosts] = useState(posts)
+
+    const [postsData, setPostsData] = useState({})
+
+    useEffect(fetchData, [])
+
+    //creo la funzione handleClick
+    function handleClick() {
+        fetchData()
+    }
+
+    //creo la funzione fetchData
+    function fetchData(url = 'http://localhost:3002/posts') {
+        fetch(url)
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data);
+                setPostsData(data)
+            })
+    }
 
 
     //creo una funzione per aggiungere un titolo
@@ -77,6 +96,7 @@ export default function Form() {
     //eseguo il return
     return (
         <>
+            <button type='button' onClick={handleClick}>Fetch Posts</button>
             <section>
                 <h2>Aggiungi un nuovo post utilizzando il form</h2>
 
@@ -158,7 +178,7 @@ export default function Form() {
 
             </section>
 
-            {initialPosts.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
+            {postsData ? initialPosts.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
         </>
     )
 }

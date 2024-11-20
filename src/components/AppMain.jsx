@@ -31,9 +31,9 @@ export default function AppMain() {
             {/* Componente Form */}
             <Form />
 
-            <div>
 
-                {postsData.data ?
+
+            {/*postsData.data ?
                     postsData.data.map(post => (
                         <div key={post.id}>
                             <img src={'http://localhost:3002/posts' + post.image} alt="" />
@@ -42,8 +42,8 @@ export default function AppMain() {
                             <p><span>{post.tags}</span></p>
                         </div>
                     )) : <p>Nessun risultato</p>
-                }
-            </div>
+            */}
+
 
             <section>
                 <h3>
