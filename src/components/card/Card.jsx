@@ -15,7 +15,7 @@ export default function Card({ cardPost, cardIndex, eliminatePost }) {
     return (
         <>
             {/*Se cardPost esiste e se il post è pubblicato genera un nuovo post */}
-            {cardPost && cardPost.published && (
+            {cardPost && (
                 <div className={style.card}>
                     <div className={`${style.cardTop} ${style.dFlex}`}>
                         {/* Immagine associata al post, con un testo alternativo generico. */}

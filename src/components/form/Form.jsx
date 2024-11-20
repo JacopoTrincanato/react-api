@@ -26,9 +26,9 @@ const addedPost = {
 //creo il componente Form
 export default function Form() {
     const [formData, setFormData] = useState(addedPost)
-    const [initialPosts, setInitialPosts] = useState(/*posts*/)
+    const [initialPosts, setInitialPosts] = useState([]) /*posts*/
 
-    const [postsData, setPostsData] = useState({})
+    const [postsData, setPostsData] = useState([])
 
     useEffect(fetchData, [])
 
@@ -42,8 +42,8 @@ export default function Form() {
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
-                setPostsData(data)
+                console.log(data.data);
+                setPostsData(data.data)
             })
     }
 
@@ -177,8 +177,8 @@ export default function Form() {
 
 
             </section>
-
-            {postsData.data ? postsData.data.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
+            {postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
+            {Array.isArray(postsData) ? postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
         </>
     )
 }
