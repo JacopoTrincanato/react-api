@@ -1,5 +1,5 @@
 //importo useState e useEffect
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //importo il form
 import Form from "./form/Form";
@@ -10,6 +10,8 @@ import posts from "../data/posts";
 //creo il componente main
 export default function AppMain() {
     const [postsData, setPostsData] = useState({})
+
+    useEffect(fetchData, [])
 
     //creo la funzione handleClick
     function handleClick() {
@@ -52,7 +54,16 @@ export default function AppMain() {
 
             <div>
                 <button type='button' onClick={handleClick}>Fetch Posts</button>
-
+                {postsData.data ?
+                    postsData.data.map(post => (
+                        <div key={post.id}>
+                            <img src={'http://localhost:3002/posts' + post.image} alt="" />
+                            <h3>{post.title}</h3>
+                            <p>{post.content}</p>
+                            <p><span>{post.tags}</span></p>
+                        </div>
+                    )) : <p>Nessun risultato</p>
+                }
             </div>
 
             <section>

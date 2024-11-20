@@ -1,3 +1,6 @@
+//importo useState e useEffect
+import { useState, useEffect } from 'react'
+
 //importo lo stile
 import style from './Card.module.css'
 
