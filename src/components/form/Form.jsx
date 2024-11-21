@@ -184,4 +184,6 @@ export default function Form() {
             {Array.isArray(postsData) ? postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
         </>
     )
+
+
 }
