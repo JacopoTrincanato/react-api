@@ -9,6 +9,25 @@ export default function AppMain() {
     //creo un array vuoto
     const uniqueTags = [];
 
+    fetch('http://localhost:3002/posts')
+        .then(resp => resp.json())
+        .then(data => {
+            //ciclo all'interno di post
+            data.forEach(post => {
+
+                //ciclo all'interno dei tag
+                post.tags.forEach(tag => {
+                    if (!uniqueTags.includes(tag)) {
+                        uniqueTags.push(tag);
+                    }
+                })
+
+            });
+
+        })
+
+
+
     //eseguo il return
     return (
         <main>
