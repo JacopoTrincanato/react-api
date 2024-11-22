@@ -59,8 +59,24 @@ export default function Form() {
             ...formData
         }
 
+        fetch('http://localhost:3002/posts', {
+            method: 'POST',
+            body: JSON.stringify(newItem),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log('Success:', response)
+                setPostsData(response.data)
+
+            })
+            .catch(error => console.error('Error:', error));
+
+
         //Aggiorno la lista dei post aggiungendo il nuovo post in cima
-        setInitialPosts([newItem, ...initialPosts])
+        //setInitialPosts([newItem, ...initialPosts])
 
         //Resetto il modulo al modello iniziale dopo l'invio
         setFormData(addedPost)
