@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 //creo il componente Card e gli aggiungo la props post
-export default function Card({ cardPost, cardIndex, eliminatePost }) {
+export default function Card({ cardPost, cardSlug, eliminatePost }) {
 
     //eseguo il return
     return (
@@ -41,7 +41,7 @@ export default function Card({ cardPost, cardIndex, eliminatePost }) {
                         <Button />
 
                         {/* Pulsante per eliminare il post. Passa l'indice come dato tramite `data-index`. */}
-                        <button onClick={eliminatePost} data-index={cardIndex} className={style.deleteBtn}>
+                        <button onClick={eliminatePost} data-slug={cardSlug} className={style.deleteBtn}>
                             <FontAwesomeIcon icon={faTrash} />
                         </button>
                     </div>

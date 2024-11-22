@@ -16,6 +16,7 @@ import Card from "../card/Card";
 //Creo il modello iniziale del post
 const addedPost = {
     title: "",
+    slug: "",
     image: "",
     content: "",
     category: "",
@@ -26,7 +27,7 @@ const addedPost = {
 //creo il componente Form
 export default function Form() {
     const [formData, setFormData] = useState(addedPost)
-    const [initialPosts, setInitialPosts] = useState([]) /*posts*/
+    //const [initialPosts, setInitialPosts] = useState([]) /*posts*/
 
     const [postsData, setPostsData] = useState([])
 
@@ -69,7 +70,7 @@ export default function Form() {
             .then(res => res.json())
             .then(response => {
                 console.log('Success:', response)
-                setPostsData(response.data)
+                setPostsData(response.data || [])
 
             })
             .catch(error => console.error('Error:', error));
@@ -99,13 +100,30 @@ export default function Form() {
     function eliminate(e) {
 
         //Ottengo l'indice del post da eliminare dal pulsante associato
-        const deleteTitle = Number(e.target.getAttribute('data-index'))
+        const slug = e.target.getAttribute('data-slug')
+
+        console.log(slug);
+
 
         //Filtro la lista dei post, escludendo quello con l'indice specificato
-        const newPost = initialPosts.filter((post, index) => index != deleteTitle)
+        //const newPost = initialPosts.filter((post, index) => index != deleteTitle)
 
-        //Aggiorno lo stato con la lista filtrata
-        setInitialPosts(newPost)
+        fetch('http://localhost:3002/posts/' + slug, {
+
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => {
+                console.log(response);
+                //Aggiorno lo stato con la lista filtrata
+                setPostsData(response.data)
+
+            })
+
+
+
 
     }
 
@@ -186,8 +204,9 @@ export default function Form() {
 
 
             </section>
-            {postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
-            {Array.isArray(postsData) ? postsData.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>) : <p>Nessun risultato</p>}
+            {/*postsData.map((post, slug) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>)*/}
+
+            {Array.isArray(postsData) ? postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>) : <p>Nessun risultato</p>}
         </>
     )
 
