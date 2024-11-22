@@ -31,7 +31,7 @@ export default function Form() {
 
     const [postsData, setPostsData] = useState([])
 
-    useEffect(fetchData, [])
+
 
     //creo la funzione handleClick
     function handleClick() {
@@ -47,6 +47,8 @@ export default function Form() {
                 setPostsData(data.data)
             })
     }
+
+    useEffect(fetchData, [])
 
 
     //creo una funzione per aggiungere un titolo
@@ -70,7 +72,7 @@ export default function Form() {
             .then(res => res.json())
             .then(response => {
                 console.log('Success:', response)
-                setPostsData(response.data || [])
+                setPostsData(response.data)
 
             })
             .catch(error => console.error('Error:', error));
@@ -204,9 +206,9 @@ export default function Form() {
 
 
             </section>
-            {/*postsData.map((post, slug) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>)*/}
+            {postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={post.slug}></Card>)}
 
-            {Array.isArray(postsData) ? postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>) : <p>Nessun risultato</p>}
+            {/*Array.isArray(postsData) ? postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>) : <p>Nessun risultato</p>*/}
         </>
     )
 
