@@ -31,8 +31,6 @@ export default function Form() {
 
     const [postsData, setPostsData] = useState([])
 
-
-
     //creo la funzione handleClick
     function handleClick() {
         fetchData()
@@ -62,6 +60,7 @@ export default function Form() {
             ...formData
         }
 
+        //Faccio una chiamata AJAX di tipo post per aggiungere un post
         fetch('http://localhost:3002/posts', {
             method: 'POST',
             body: JSON.stringify(newItem),
@@ -76,10 +75,6 @@ export default function Form() {
 
             })
             .catch(error => console.error('Error:', error));
-
-
-        //Aggiorno la lista dei post aggiungendo il nuovo post in cima
-        //setInitialPosts([newItem, ...initialPosts])
 
         //Resetto il modulo al modello iniziale dopo l'invio
         setFormData(addedPost)
@@ -122,15 +117,12 @@ export default function Form() {
     //creo una funzione per cancellare un titolo del post
     function eliminate(e) {
 
-        //Ottengo l'indice del post da eliminare dal pulsante associato
+        //Ottengo lo slug del post da eliminare dal pulsante associato
         const slug = e.target.getAttribute('data-slug')
 
         console.log(slug);
 
-
-        //Filtro la lista dei post, escludendo quello con l'indice specificato
-        //const newPost = initialPosts.filter((post, index) => index != deleteTitle)
-
+        //Faccio una chiamata AJAX di tipo delete per cancellare un post
         fetch('http://localhost:3002/posts/' + slug, {
 
             method: 'DELETE',
