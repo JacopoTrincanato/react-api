@@ -213,29 +213,62 @@ export default function Form() {
 
                     {/* Checkbox per i vari tag*/}
                     <div>
-                        <input type="checkbox"
-                            name="tags"
-                            value={formData.tags}
-                            onChange={handleFormField}
-                        />html
 
                         <input type="checkbox"
                             name="tags"
                             value={formData.tags}
                             onChange={handleFormField}
-                        />css
+                        />Dolci
 
                         <input type="checkbox"
                             name="tags"
                             value={formData.tags}
                             onChange={handleFormField}
-                        />js
+                        />Torte
 
                         <input type="checkbox"
                             name="tags"
                             value={formData.tags}
                             onChange={handleFormField}
-                        />php
+                        />Ricette vegetariane
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Ricette al forno
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Antipasti
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Primi piatti
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Dolci veloci
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Ricette veloci
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />Dolci al cioccolato
+
+
 
                     </div>
 
