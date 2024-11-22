@@ -72,7 +72,7 @@ export default function Form() {
             .then(res => res.json())
             .then(response => {
                 console.log('Success:', response)
-                setPostsData(response.data)
+                setPostsData(response.data || [])
 
             })
             .catch(error => console.error('Error:', error));
@@ -88,14 +88,48 @@ export default function Form() {
 
     function handleFormField(e) {
 
-        //Determino il valore del campo in base al tipo (checkbox o altri campi come input)
-        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+        // Destrutturo gli attributi dell'evento target per ottenere name, value, type e checked
+        const { name, value, type, checked } = e.target;
 
-        //Aggiorno formData con setFormData usando il nome del campo (e.target.name) come chiave e il valore inserito
-        setFormData({
-            ...formData,
-            [e.target.name]: value
-        })
+        // Controllo se il campo è un checkbox e se il nome è "tags"
+        if (type === "checkbox" && name === "tags") {
+            // Aggiorno lo stato dei tag nel formData.
+            setFormData((prevState) => ({
+                // Mantengo invariato il resto dei dati nel formData
+                ...prevState,
+                tags: checked
+
+                    // Se il checkbox è selezionato, aggiungo il valore al campo tags
+                    ? [...prevState.tags, value]
+
+                    // Altrimenti, rimuovo il valore dal campo tags
+                    : prevState.tags.filter((tag) => tag !== value),
+            }));
+        }
+
+        // Controllo se il nome è "published" (il select che gestisce lo stato pubblicato)
+        else if (name === "published") {
+            setFormData({
+
+                // Mantengo invariato il resto dei dati nel formData
+                ...formData,
+
+                // Aggiorno il valore di `published` in base all'opzione selezionata
+                published: value === "published",
+            });
+        }
+
+        // Per tutti gli altri campi
+        else {
+            setFormData({
+
+                // Mantengo invariato il resto dei dati nel formData
+                ...formData,
+
+                // Aggiorno il campo corrispondente (name è la chiave del dato) con il valore inserito
+                [name]: value,
+            });
+        }
     }
 
     //creo una funzione per cancellare un titolo del post
@@ -206,9 +240,9 @@ export default function Form() {
 
 
             </section>
-            {postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={post.slug}></Card>)}
+            {/*postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={post.slug}></Card>)*/}
 
-            {/*Array.isArray(postsData) ? postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={slug}></Card>) : <p>Nessun risultato</p>*/}
+            {Array.isArray(postsData) ? postsData.map((post, slug) => <Card key={post.slug} cardPost={post} eliminatePost={eliminate} cardSlug={post.slug}></Card>) : <p>Nessun risultato</p>}
         </>
     )
 
