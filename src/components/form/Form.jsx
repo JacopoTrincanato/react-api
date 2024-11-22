@@ -106,19 +106,6 @@ export default function Form() {
                     : prevState.tags.filter((tag) => tag !== value),
             }));
         }
-
-        // Controllo se il nome è "published" (il select che gestisce lo stato pubblicato)
-        else if (name === "published") {
-            setFormData({
-
-                // Mantengo invariato il resto dei dati nel formData
-                ...formData,
-
-                // Aggiorno il valore di `published` in base all'opzione selezionata
-                published: value === "published",
-            });
-        }
-
         // Per tutti gli altri campi
         else {
             setFormData({
