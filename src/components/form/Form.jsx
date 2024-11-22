@@ -16,6 +16,7 @@ import Card from "../card/Card";
 //Creo il modello iniziale del post
 const addedPost = {
     title: "",
+    slug: "",
     image: "",
     content: "",
     category: "",
@@ -58,7 +59,6 @@ export default function Form() {
         //Creo un nuovo oggetto post combinando un ID univoco e uno slug (Date.now()) con i dati del modulo
         const newItem = {
             id: Date.now(),
-            slug: "lorem ipsum",
             ...formData
         }
 
@@ -191,6 +191,14 @@ export default function Form() {
                         className={style.placeholder}
                         name="image"
                         value={formData.image}
+                        onChange={handleFormField} />
+
+                    {/* Campo per lo slug del post */}
+                    <input type="text"
+                        placeholder="Inserisci lo slug"
+                        className={style.placeholder}
+                        name="slug"
+                        value={formData.slug}
                         onChange={handleFormField} />
 
                     {/* Campo per il contenuto del post */}
