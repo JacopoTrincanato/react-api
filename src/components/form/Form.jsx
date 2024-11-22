@@ -255,8 +255,6 @@ export default function Form() {
                             onChange={handleFormField}
                         />Dolci al cioccolato
 
-
-
                     </div>
 
 
