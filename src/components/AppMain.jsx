@@ -1,41 +1,34 @@
+//importo useState e useEffect da react
+import { useState, useEffect } from "react";
+
 //importo il form
 import Form from "./form/Form";
-
-//import posts from "../data/posts";
 
 //creo il componente main
 export default function AppMain() {
 
-    //ciclo all'interno dell'array posts per creare una sezione con i tag in modo che non si ripetano
+    // Stato per i tag unici
+    const [uniqueTags, setUniqueTags] = useState([]);
 
-    //creo un array vuoto
-    const uniqueTags = [];
+    // uso useEffect per fare la chiamata API
+    useEffect(() => {
+        fetch('http://localhost:3002/posts')
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data.data);
 
-    fetch('http://localhost:3002/posts')
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data.data);
-            //setPostsData(data.data)
+                // Creazione di un array vuoto dove inserire i tag
+                const newTags = [];
 
-            //ciclo all'interno di post
-            data.data.forEach(post => {
+                data.data.forEach(post => {
+                    post.tags.forEach(tag => newTags.push(tag));
+                });
 
-                //ciclo all'interno dei tag
-                post.tags.forEach(tag => {
-                    if (!uniqueTags.includes(tag)) {
-                        uniqueTags.push(tag);
-                    }
-                })
-
-            });
-        })
-
-
-
-
-
-
-
+                // Aggiorno lo stato con i tag
+                setUniqueTags(newTags);
+            })
+            .catch(err => console.error("Errore nella fetch:", err));
+    }, []);
 
     //eseguo il return
     return (

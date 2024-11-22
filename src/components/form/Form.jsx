@@ -31,11 +31,6 @@ export default function Form() {
 
     const [postsData, setPostsData] = useState([])
 
-    //creo la funzione handleClick
-    function handleClick() {
-        fetchData()
-    }
-
     //creo la funzione fetchData
     function fetchData(url = 'http://localhost:3002/posts') {
         fetch(url)
@@ -44,6 +39,11 @@ export default function Form() {
                 console.log(data.data);
                 setPostsData(data.data)
             })
+    }
+
+    //creo la funzione handleClick
+    function handleClick() {
+        fetchData()
     }
 
     useEffect(fetchData, [])
@@ -146,7 +146,7 @@ export default function Form() {
     return (
         <>
 
-            <button type='button' onClick={handleClick}>Fetch Posts</button>
+            <button type='button' onClick={handleClick} className={style.fetchBtn}>Fetch Posts</button>
 
 
             <section>
