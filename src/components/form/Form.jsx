@@ -195,55 +195,55 @@ export default function Form() {
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Dolci"
                             onChange={handleFormField}
                         />Dolci
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Torte"
                             onChange={handleFormField}
                         />Torte
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Ricette vegetariane"
                             onChange={handleFormField}
                         />Ricette vegetariane
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Ricette al forno"
                             onChange={handleFormField}
                         />Ricette al forno
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Antipasti"
                             onChange={handleFormField}
                         />Antipasti
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Primi piatti"
                             onChange={handleFormField}
                         />Primi piatti
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Dolci veloci"
                             onChange={handleFormField}
                         />Dolci veloci
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Ricette veloci"
                             onChange={handleFormField}
                         />Ricette veloci
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value="Dolci al cioccolato"
                             onChange={handleFormField}
                         />Dolci al cioccolato
 
